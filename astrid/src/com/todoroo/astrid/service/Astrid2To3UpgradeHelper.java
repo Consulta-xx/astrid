@@ -2,8 +2,8 @@ package com.todoroo.astrid.service;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.StringTokenizer;
 import java.util.Map.Entry;
+import java.util.StringTokenizer;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -12,8 +12,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -116,15 +116,7 @@ public class Astrid2To3UpgradeHelper {
      */
     public void upgrade2To3(final Context context, final UpgradeService upgradeService, final int from) {
 
-        // if from < 1 (we don't know what version, and database exists, leave it alone)
-        if(from < 1 && checkIfDatabaseExists(context, database.getName()))
-            return;
-
-        // if you don't have a legacy task table, skip this step
-        if(!checkIfDatabaseExists(context, tasksTable))
-            return;
-
-        // else, if there's already a database table, clear it out (!!!)
+        // if there's already a database table, clear it out (!!!)
         if(checkIfDatabaseExists(context, database.getName()))
             context.deleteDatabase(database.getName());
         database.openForWriting();
