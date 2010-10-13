@@ -20,9 +20,9 @@ import android.widget.Button;
 import com.timsu.astrid.R;
 import com.todoroo.andlib.service.ContextManager;
 import com.todoroo.andlib.utility.DateUtilities;
+import com.todoroo.andlib.utility.Preferences;
 import com.todoroo.astrid.data.AddOn;
 import com.todoroo.astrid.utility.Constants;
-import com.todoroo.andlib.utility.Preferences;
 
 /**
  * Astrid Service for managing add-ons
@@ -236,7 +236,7 @@ public class AddOnService {
 
         list[3] = new AddOn(true, false, "Remember the Milk", null,
                 "Synchronize with Remember The Milk service.",
-                Constants.PACKAGE, "http://www.rmilk.com",
+                "org.weloveastrid.rmilk", "http://www.rmilk.com",
                 ((BitmapDrawable)r.getDrawable(R.drawable.ic_menu_refresh)).getBitmap());
 
         return list;

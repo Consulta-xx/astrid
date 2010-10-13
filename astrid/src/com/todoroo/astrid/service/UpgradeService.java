@@ -19,6 +19,8 @@ import com.todoroo.astrid.dao.Database;
 
 public final class UpgradeService {
 
+    public static final int V3_5_0 = 163;
+    public static final int V3_4_0 = 162;
     public static final int V3_3_0 = 155;
     public static final int V3_2_0 = 147;
     public static final int V3_1_0 = 146;
@@ -61,6 +63,9 @@ public final class UpgradeService {
 
                     if(from < V3_1_0)
                         new Astrid2To3UpgradeHelper().upgrade3To3_1(context, from);
+
+                    if(from < V3_5_0)
+                        upgrade3To3_5(context);
 
                 } finally {
                     if(context instanceof Activity) {
@@ -173,8 +178,7 @@ public final class UpgradeService {
 
     // --- upgrade functions
 
-    @SuppressWarnings({"nls", "unused"})
-    private void upgrade3To3_4(final Context context) {
+    private void upgrade3To3_5(final Context context) {
         // if RTM, store RTM to secondary preferences
         if(Preferences.getStringValue("rmilk_token") != null) {
             SharedPreferences settings = context.getSharedPreferences("rtm", Context.MODE_WORLD_READABLE);

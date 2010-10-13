@@ -3,8 +3,6 @@ package com.todoroo.astrid.service;
 import java.io.File;
 import java.util.List;
 
-import org.weloveastrid.rmilk.MilkUtilities;
-
 import android.Manifest;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
@@ -131,7 +129,6 @@ public class StartupService {
 
                 // if sync ongoing flag was set, clear it
                 ProducteevUtilities.INSTANCE.stopOngoing();
-                MilkUtilities.INSTANCE.stopOngoing();
 
                 ProducteevBackgroundService.scheduleService();
                 BackupService.scheduleService(context);
